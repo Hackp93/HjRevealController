@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Main Controller"; ObjectID = "3up-ds-YTL"; */
+"3up-ds-YTL.text" = "Main Controller";
+
+/* Class = "UIButton"; normalTitle = "Toggle Drawer"; ObjectID = "78o-Q2-O7l"; */
+"78o-Q2-O7l.normalTitle" = "Toggle Drawer";
+
+/* Class = "UILabel"; text = "Drawer"; ObjectID = "FRb-uT-1cO"; */
+"FRb-uT-1cO.text" = "Drawer";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MRA-wJ-2aM"; */
+"MRA-wJ-2aM.normalTitle" = "Button";

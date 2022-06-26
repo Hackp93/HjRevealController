@@ -64,8 +64,8 @@ public class HJRevealViewController: UIViewController {
     var gestureStartingPoint : CGPoint!
     
     
-    var mainControllerIdentifier : String!
-    var drawerControllerIdentifier : String!
+    public var mainControllerIdentifier : String!
+    public var drawerControllerIdentifier : String!
     
     // MARK: - overridden methods
     
@@ -108,19 +108,19 @@ public class HJRevealViewController: UIViewController {
     }
 
     
-    func openDrawerDragging(_ sender: UIPanGestureRecognizer) {
+    @objc func openDrawerDragging(_ sender: UIPanGestureRecognizer) {
         
         let translation = sender.translation(in: self.view)
         
         
-        if sender.state == UIGestureRecognizerState.began {
+        if sender.state == UIGestureRecognizer.State.began {
             
             if sender.location(in: self.view).x <= 15 || drawerState == .Open {
                 gestureStartingPoint    =   translation
             }
             
             
-        } else if sender.state == UIGestureRecognizerState.ended {
+        } else if sender.state == UIGestureRecognizer.State.ended {
 
                 if gestureStartingPoint != nil {
                     let velocity = sender.velocity(in: self.view)
@@ -135,7 +135,7 @@ public class HJRevealViewController: UIViewController {
                 }
             
             
-        } else if sender.state == UIGestureRecognizerState.changed {
+        } else if sender.state == UIGestureRecognizer.State.changed {
             
                 if gestureStartingPoint != nil {
                     
@@ -164,9 +164,9 @@ public class HJRevealViewController: UIViewController {
     
     func setMainViewController(){
         
-        addChildViewController(mainViewController!)
+        addChild(mainViewController!)
         self.view.addSubview((mainViewController?.view)!)
-        mainViewController?.didMove(toParentViewController: self)
+        mainViewController?.didMove(toParent: self)
         
         mainViewController?.view.translatesAutoresizingMaskIntoConstraints   =   false
         
@@ -182,9 +182,9 @@ public class HJRevealViewController: UIViewController {
     
     func setDrawerViewController(){
      
-        addChildViewController(drawerViewController!)
+        addChild(drawerViewController!)
         self.view.addSubview((drawerViewController?.view)!)
-        drawerViewController?.didMove(toParentViewController: self)
+        drawerViewController?.didMove(toParent: self)
         
         drawerViewController?.view.translatesAutoresizingMaskIntoConstraints   =   false
         
@@ -196,7 +196,7 @@ public class HJRevealViewController: UIViewController {
         
         NSLayoutConstraint(item: drawerViewController!.view!, attribute: .width, relatedBy: .equal, toItem:view , attribute: .width, multiplier: drawerWidth, constant: 0).isActive   =   true
 
-        view.bringSubview(toFront:  (mainViewController?.view)!)
+        view.bringSubviewToFront((mainViewController?.view)!)
         setButton()
     }
     
@@ -219,11 +219,11 @@ public class HJRevealViewController: UIViewController {
         NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: closeButton, attribute: .height, multiplier: 1, constant: 0).isActive   =   true
         
         NSLayoutConstraint(item: closeButton, attribute: .width, relatedBy: .equal, toItem:view , attribute: .width, multiplier: (1 - drawerWidth), constant: 0).isActive   =   true
-        view.bringSubview(toFront: closeButton)
+            view.bringSubviewToFront(closeButton)
         }
     }
     
-    func onClickCloseButton(_ sender : UIButton){
+    @objc func onClickCloseButton(_ sender : UIButton){
         closeDrawer()
     }
     

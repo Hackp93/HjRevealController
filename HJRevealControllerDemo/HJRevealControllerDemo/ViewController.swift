@@ -31,12 +31,11 @@ class ViewController: UIViewController {
         let mainVC  =   storyboard?.instantiateViewController(withIdentifier: "mainvc")
         
         drawer.drawerWidth          =   0.7
+        drawer.drawerType = .Reveal
         drawer.mainViewController   =   mainVC
         drawer.drawerViewController =   drawerMenu
         
-        
-        
-        present(drawer, animated: true, completion: nil)
+        self.view.window?.rootViewController = drawer
         
     }
 
